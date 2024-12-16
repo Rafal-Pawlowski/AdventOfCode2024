@@ -3,7 +3,6 @@ package org.example;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,18 +64,18 @@ public class DayTwo {
 
 
     private boolean canBeMadeSafe(List<Integer> list) {
-        if (list.size() <= 2) return true; // A single point or two points always form a valid sequence.
+        if (list.size() <= 2) return true;
 
         for (int i = 0; i < list.size(); i++) {
             List<Integer> modifiedList = new ArrayList<>(list);
             modifiedList.remove(i);
 
             if (isListValid(modifiedList)) {
-                return true; // Removing one level works
+                return true;
             }
         }
 
-        return false; // No single removal makes the list safe
+        return false;
     }
 
     private static boolean isListValid(List<Integer> list) {
@@ -86,10 +85,10 @@ public class DayTwo {
         for (int i = 1; i < list.size(); i++) {
             int diff = list.get(i) - list.get(i - 1);
 
-            if (diff < -3 || diff > 3) return false; // difference out of range
-            if (diff == 0) return false; // no change in level invalidates
+            if (diff < -3 || diff > 3) return false;
+            if (diff == 0) return false;
 
-            if (diff > 0) isDecreasing = false; // detect mixed trends
+            if (diff > 0) isDecreasing = false;
             if (diff < 0) isIncreasing = false;
         }
 
