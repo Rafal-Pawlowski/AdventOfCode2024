@@ -36,14 +36,6 @@ public class DayOne {
             Collections.sort(column1);
             Collections.sort(column2);
 
-            //mamy posortowane listy
-            //w pętli pobieramy numer z lewej listy
-            //porównujemy go w drugiej pętli w pętli z listą prawej i sprawdzamy czy wystepuje equals
-            //musimy stworzyć licznik lub zrobić to streamem metodą count
-            //counter pomnozyć przez liczbę z lewej listy
-            //wstawić do listy result
-            //na koniec zsumować listę result
-
             for (int i = 0; i < column1.size(); i++) {
 
                 int number = column1.get(i);
