@@ -19,10 +19,28 @@ public class DayThree {
             List<String> fileList = readfile(fileName);
             List<String> mulsList = processMulToList(fileList);
 
-           multipliedList = getMultipliedList(mulsList);
+            multipliedList = getMultipliedList(mulsList);
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        return multipliedList.stream()
+                .mapToInt(Integer::intValue)
+                .sum();
+    }
+
+
+    public long corruptedData2(String fileName) {
+        List<Integer> multipliedList = new ArrayList<>();
+
+        try {
+            List<String> filelist = readfile(fileName);
+            List<String> doList = processDoDont(filelist);
+            multipliedList = getMultipliedList(doList);
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         return multipliedList.stream()
                 .mapToInt(Integer::intValue)
@@ -34,6 +52,33 @@ public class DayThree {
         return Files.readAllLines(Path.of(filename));
     }
 
+    public List<String> processDoDont(List<String> fileList) {
+        String fullText = String.join(" ", fileList);
+
+        String regex = "(do\\(\\)|don't\\(\\))|(mul\\(\\d{1,3},\\d{1,3}\\))";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(fullText);
+
+        List<String> resultList = new ArrayList<>();
+        boolean enabled = true;
+
+        while (matcher.find()) {
+            String match = matcher.group();
+
+
+            if (match.equals("do()")) {
+                enabled = true;
+            } else if (match.equals("don't()")) {
+                enabled = false;
+            }
+            
+            else if (enabled && match.startsWith("mul(")) {
+                resultList.add(match);
+            }
+        }
+
+        return resultList;
+    }
     public List<String> processMulToList(List<String> rawList) {
         List<String> processedList = new ArrayList<>();
 
