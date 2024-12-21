@@ -23,9 +23,13 @@ public class Main {
 //        long l2 = dayThree.corruptedData2("src/main/resources/day_three.txt");
 //        System.out.println(l2);
 
-//         //DayFour
-        DayFour dayFour = new DayFour();
-        long l = dayFour.wordSearch("src/main/resources/day_four.txt");
+//        //DayFour
+//        DayFour dayFour = new DayFour();
+//        long l = dayFour.wordSearch("src/main/resources/day_four.txt");
+//        System.out.println(l);
+
+        DayFive dayFive = new DayFive();
+        long l = dayFive.pageOrderCorrectnessChecker("src/main/resources/day_five.txt");
         System.out.println(l);
     }
 }

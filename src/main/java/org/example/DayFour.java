@@ -76,7 +76,7 @@ public class DayFour {
         int cols = rawlist.get(0).length();
         List<String> diagonals = new ArrayList<>();
 
-        // Left UP to Right Down
+        // Left Down to Right UP
         for (int d = -rows + 1; d < cols; d++) {
             StringBuilder diagonal = new StringBuilder();
             for (int row = 0; row < rows; row++) {
